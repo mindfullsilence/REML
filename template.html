@@ -1,0 +1,513 @@
+<!--
+/* ---------------------------------------------------------------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                                                 DOCUMENTATION
+
+This template contains pieces of code (modules) that you can use to create responsive email layouts. The beginning and
+ending of a module is declared like so:
+    <!-- START: [descriptive_module_name] ->
+        [code]
+    <!-- END: [descriptive_module_name] ->
+This file is not intended for viewing in the browser, as it is simple pieces of code for use in your own HTML file. To
+see a preview of each module, view the "template-preview.html" file located in the same folder as this file.
+
+
+------------------------------------
+INSTRUCTIONS FOR USE
+------------------------------------
+Use the following step-by-step guide to create a responsive layout:
+
+1)
+    Begin with the "doc_structure" module. Do not modify anything in the head tag of this module:
+            <!-- START: doc_structure ->
+                [html code]
+            <!-- END: doc_structure ->
+    It can be found just below this documentation portion.
+2)
+    Choose any modules (except the "doc_structure" module) from this document and copy the contents of the module
+    (inside the comment tags):
+            <!-- START: [descriptive_module_name] ->
+                [html code] <======== COPY ANYTHING IN HERE!
+            <!-- END: [descriptive_module_name] ->
+
+3)
+    You may select the area inside these modules, copy them, and paste them into your own html file, inside the
+    following comment tags within the "doc_structure" module:
+            <td>
+							<!-- ### Insert Modules Here ### ->
+								[html code] <======== PASTE YOUR MODULES HERE
+							<!-- ### End Modules ### ->
+            </td>
+
+4)
+    Finish by changing the title tag in the head of the document to something that makes sense. Change any img tags to
+    the appropriate src attribute. Finally, change any inline styles as needed. Remember, do not change any styles in
+    the head that come after the "DO NOT CHANGE" marker, or any meta tags. Try to avoid anything that sounds semantic, and
+    use <span> tags with inline styles instead - they render consistently across all email clients. To adjust the styles
+    for mobile, consult the class styles defined in the head (e.g. h1, h2, h3, etc.)
+
+
+------------------------------------
+RESOURCES FOR AVOIDING RENDER ISSUES
+------------------------------------
+1)  http://internations.github.io/antwort/guide.html
+2)  http://kb.mailchimp.com/article/how-to-code-html-emails
+3)  http://www.1stwebdesigner.com/tutorials/ultimate-guide-html-emails/
+
+------------------------------------
+ATTRIBUTION
+------------------------------------
+These modules are based off of examples from the "MailChimp Email Blueprints" and the "Antwort Responsive Layouts for
+Email".
+    https://github.com/mailchimp/Email-Blueprints
+    http://internations.github.io/antwort/index.html
+
+
+------------------------------------
+IMPORTANT!
+------------------------------------
+This is a read only file to reduce chance of overriding, remember to only copy and paste into your own file. DO NOT
+OVERRIDE THIS FILE.
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+--------------------------------------------------------------------------------------------------------------------- */
+-->
+
+
+
+
+
+
+<!-- START: doc_structure -->
+
+<!DOCTYPE HTML><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport"
+content="initial-scale=1.0"><meta name="format-detection" content="telephone=no">
+
+    <!-- EDIT THE TITLE TAG -->
+    <title>
+        Responsive Email Modules
+    </title>
+
+
+    <style type="text/css">
+						/*************************************
+										DO NOT TOUCH THESE
+						*************************************/
+						.ReadMsgBody { width: 100%; background-color: #ebebeb;}
+						.ExternalClass {width: 100%; background-color: #ebebeb;}
+						.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td,
+						.ExternalClass div {line-height:100%;}
+						body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;}
+						body {margin:0; padding:0;}
+						table {border-spacing:0;}
+						table td {border-collapse:collapse;}
+						.yshortcuts a {border-bottom: none !important;}
+						img {width: 100%; max-width: 600px;}
+
+            /* Constrain email width for small screens */
+        @media screen and (max-width: 600px) {
+            table[class="container"] {
+                width: 95% !important;
+            }
+        }
+            /* Give content more room on mobile */
+        @media screen and (max-width: 480px) {
+            td[class="container-padding"] {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+        }
+            /* Styles for forcing columns to rows */
+        @media only screen and (max-width : 600px) {
+            table[class="columns-container"] {
+                width: 100% !important;
+            }
+            /* force container columns to (horizontal) blocks */
+            td[class="force-col"] {
+                display: block;
+                width: 100% !important;
+                padding-right: 0 !important;
+            }
+            table[class="col-3"], table[class="col-2"] {
+                /* unset table align="left/right" */
+                float: none !important;
+                width: 100% !important;
+
+                /* change left/right padding and margins to top/bottom ones */
+                margin-bottom: 12px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid #eee;
+            }
+            table[class="col-2"] {
+                padding-right: 0 !important;
+            }
+            /* remove bottom border for last column/row */
+            table[id="last-col-3"] {
+                border-bottom: none !important;
+                margin-bottom: 0;
+            }
+            /* align images right and shrink them a bit */
+            img[class="col-3-img"] {
+                float: right;
+                margin-left: 6px;
+                width: 40%;
+                max-width: 130px;
+            }
+            img[class="col-3-full-img"] {
+                float: none;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width : 600px) {
+            /**********************************
+                    YOU CAN EDIT THESE
+            **********************************/
+            table[id="columns-container"] {
+                margin-bottom: 20px !important;
+            }
+            table[class="col-3"] {
+                border-bottom-color: #455560;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                margin-bottom: 15px;
+            }
+            span[class="h1"] {
+                font-size: 18px !important;
+                font-weight: bold !important;
+                font-family: sans-serif !important;
+                color: #2469A0 !important;
+            }
+
+            span[class="h2"] {
+                font-size: 16px !important;
+                font-weight: bold !important;
+                font-family: sans-serif !important;
+                color: #2469A0 !important;
+            }
+
+            span[class="h3"] {
+                font-size: 14px !important;
+                font-weight: bold !important;
+                font-family: sans-serif !important;
+                color: #2469A0 !important;
+            }
+
+            span[class="p"] {
+                font-size: 14px !important;
+                font-weight: normal !important;
+                font-family: sans-serif !important;
+                color: #666666 !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body
+	style="margin:0; padding:10px 0;"
+	bgcolor="#ebebeb"
+	leftmargin="0"
+	topmargin="0"
+	marginwidth="0"
+	marginheight="0">
+
+<br>
+
+<table
+	border="0"
+	width="100%"
+	height="100%"
+	cellpadding="0"
+	cellspacing="0"
+	bgcolor="#ebebeb">
+	<tr>
+		<td
+			align="center"
+			valign="top"
+			bgcolor="#ebebeb"
+			style="background-color: #ebebeb;">
+
+			<!-- The following "<table>", "<tr>", and "<td>" create your content wrapper -->
+				<table
+					border="0"
+					width="600"
+					cellpadding="0"
+					cellspacing="0"
+					class="container"
+					bgcolor="#ffffff">
+						<tr>
+							<td
+								class="container-padding"
+								bgcolor="#ffffff"
+								style="background-color: #ffffff;
+												padding-left: 30px;
+												padding-right: 30px;
+												font-size: 13px;
+												line-height: 20px;
+												font-family: Helvetica, sans-serif;
+												color: #333;"
+								align="left">
+								<br>
+
+    <!-- ### Insert Modules Here ### -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ### End Modules ### -->
+
+<br><br></td></tr></table></td></tr></table><br></body></html>
+
+<!-- END: doc_structure -->
+
+
+
+
+
+
+
+
+
+
+<!--
+/* ---------------------------------------------------------------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                                                 BEGIN MODULES
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+--------------------------------------------------------------------------------------------------------------------- */
+-->
+
+
+<!-- START: FULL_WIDTH_IMAGE -->
+<table
+	border="0"
+	cellpadding="0"
+	cellspacing="0"
+	class="columns-container">
+	<tr>
+		<td
+			class="forceCol"
+			valign="top">
+
+
+			<!-- image (replace src attribute) -->
+			<img src="http://dummyimage.com/600x200/ccc/fff.jpg"
+					 alt="Image Caption"
+					 border="0"
+					 hspace="0"
+					 vspace="0"
+					 style="vertical-align:top; padding-bottom:12px;"
+					 class="col-1-img">
+
+	</tr>
+</table>
+</div>
+<br>
+<!-- END: FULL_WIDTH_IMAGE -->
+
+
+<br>
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<br>
+
+
+<!-- START: 1_Column -->
+
+<table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+	<tr>
+		<td class="force-col" valign="top">
+
+			<!-- Column 1 content (MAKE EDITS IN HERE) -->
+			<span
+				class="h2"
+				style="color: #666666; font-weight: bold; font-size: 23px;">
+				This is a heading
+			</span>
+			<img src="http://dummyimage.com/600x200/ccc/fff.jpg"
+					 alt="Image Caption"
+					 border="0"
+					 hspace="0"
+					 vspace="0"
+					 style="vertical-align:top; padding-bottom:12px;"
+					 class="col-1-img">
+
+			<span style="font-weight: normal; font-size: 13px; line-height: 20px; color: #000; font-family: sans-serif;">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+					aliquet ut arcu pharetra porta. Fusce non	sem sed libero lobortis
+					dignissim quis quis tortor. Etiam non pellentesque augue. Nulla
+					feugiat risus at lobortis posuere. Vestibulum sit amet magna in
+					leo volutpat dignissim vel sed nisi. Nullam laoreet sem vel	leo
+					tincidunt, non ornare est malesuada. Donec malesuada nibh congue
+					urna vulputate, eget consectetur nibh	consequat. Pellentesque sed
+					justo quis nisi dictum molestie id et sem.
+			</span>
+			<!-- end Column 1 content -->
+	</tr>
+</table>
+<br>
+<!-- END: 1_COLUMN -->
+
+
+<br>
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<br>
+
+
+<!-- START: 2_COLUMN -->
+
+<table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+	<tr>
+		<td class="force-col" valign="top">
+
+			<img src="http://lorempixel.com/375/170" alt=""/>
+			<span>Elementaque formaeque caelumque litora zephyro scythiam coegit locis. Forma elementaque. Verba frigida mutastis chaos: origo. Tanta aestu. Mea mollia tumescere montes aere habitabilis. Distinxit media summaque effervescere non sunt cuncta mare subdita. Orba onus hanc plagae super mea liquidas seductaque. Pro volucres pronaque induit figuras alto inclusum ille grandia ante.</span>
+
+		</td>
+		<td class="force-col" valign="top">
+
+			<img src="http://lorempixel.com/375/170" alt=""/>
+			<br>
+			<span>Elementaque formaeque caelumque litora zephyro scythiam coegit locis. Forma elementaque. Verba frigida mutastis chaos: origo. Tanta aestu. Mea mollia tumescere montes aere habitabilis. Distinxit media summaque effervescere non sunt cuncta mare subdita. Orba onus hanc plagae super mea liquidas seductaque. Pro volucres pronaque induit figuras alto inclusum ille grandia ante.</span>
+
+		</td>
+	</tr>
+</table>
+
+<!-- END: 2_COLUMN -->
+
+
+<br>
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<br>
+
+<!-- 3 COLUMN IMAGE FLOATED RIGHT -->
+<table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+	<tr>
+		<td class="force-col" style="padding-right: 20px;" valign="top">
+
+			<!-- ### COLUMN 1 ### -->
+			<table border="0" cellspacing="0" cellpadding="0" width="175" align="left" class="col-3">
+				<tr>
+					<td align="left" valign="top" style="font-size:13px; line-height: 20px; font-family: Arial, sans-serif;">
+						<img src="http://internations.github.com/antwort/images/grey-175x130.png" alt="Image Caption" border="0" hspace="0" vspace="0" style="vertical-align:top; padding-bottom:12px;" class="col-3-img">
+						<a href="#" style="color:#2469A0; font-weight:bold">Herman Melville</a><br>
+						It's worse than being in the whirled woods, the last day of the year! Who'd go climbing after chestnuts now? But there they go, all cursing, and here I don't.
+						<br>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+		<td class="force-col" style="padding-right: 20px;" valign="top">
+
+			<!-- ### COLUMN 2 ### -->
+			<table border="0" cellspacing="0" cellpadding="0" width="175" align="left" class="col-3">
+				<tr>
+					<td align="left" valign="top" style="font-size:13px; line-height: 20px; font-family: Arial, sans-serif;">
+						<img src="http://internations.github.com/antwort/images/grey-175x130.png" alt="Image Caption" border="0" hspace="0" vspace="0" style="vertical-align:top; padding-bottom:12px;" class="col-3-img">
+						<a href="#" style="color:#2469A0; font-weight:bold">Herman Melville</a><br>
+						Fine prospects to 'em; they're on the road to heaven. Hold on hard! Jimmini, what a squall! But those chaps there are worse yet—they are your&hellip;
+						<br>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+		<td class="force-col"  valign="top">
+
+			<!-- ### COLUMN 3 ### -->
+			<table border="0" cellspacing="0" cellpadding="0" width="175" align="right" class="col-3" id="last-col-3">
+				<tr>
+					<td align="left" valign="top" style="font-size:13px; line-height: 20px; font-family: Arial, sans-serif;">
+						<img src="http://internations.github.com/antwort/images/grey-175x130.png" alt="Image Caption" border="0" hspace="0" vspace="0" style="vertical-align:top; padding-bottom:12px;" class="col-3-img">
+						<a href="#" style="color:#2469A0; font-weight:bold">I am Ishmael</a><br>
+						White squalls? white whale, shirr! shirr! Here have I heard all their chat just now, and the white whale—shirr! shirr!—but spoken of once! and&hellip;
+						<br>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+	</tr>
+</table>
+
+
+<br>
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+<br>
+
+
+
+<!-- 3 COLUMN FULL WIDTH IMAGE -->
+<table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+	<tr>
+		<td class="force-col" style="padding-right: 20px;" valign="top">
+
+			<!-- ### COLUMN 1 ### -->
+			<table border="0" cellspacing="0" cellpadding="0" width="175" align="left" class="col-3">
+				<tr>
+					<td align="left" valign="top" style="font-size:13px; line-height: 20px; font-family: Arial, sans-serif;">
+						<img src="http://internations.github.com/antwort/images/grey-175x130.png" alt="Image Caption" border="0" hspace="0" vspace="0" style="vertical-align:top; padding-bottom:12px;" class="col-2-img">
+						<a href="#" style="color:#2469A0; font-weight:bold">Herman Melville</a><br>
+						It's worse than being in the whirled woods, the last day of the year! Who'd go climbing after chestnuts now? But there they go, all cursing, and here I don't.
+						<br>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+		<td class="force-col" style="padding-right: 20px;" valign="top">
+
+			<!-- ### COLUMN 2 ### -->
+			<table border="0" cellspacing="0" cellpadding="0" width="175" align="left" class="col-3">
+				<tr>
+					<td align="left" valign="top" style="font-size:13px; line-height: 20px; font-family: Arial, sans-serif;">
+						<img src="http://internations.github.com/antwort/images/grey-175x130.png" alt="Image Caption" border="0" hspace="0" vspace="0" style="vertical-align:top; padding-bottom:12px;" class="col-2-img">
+						<a href="#" style="color:#2469A0; font-weight:bold">Herman Melville</a><br>
+						Fine prospects to 'em; they're on the road to heaven. Hold on hard! Jimmini, what a squall! But those chaps there are worse yet—they are your&hellip;
+						<br>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+		<td class="force-col"  valign="top">
+
+			<!-- ### COLUMN 3 ### -->
+			<table border="0" cellspacing="0" cellpadding="0" width="175" align="right" class="col-3" id="last-col-3">
+				<tr>
+					<td align="left" valign="top" style="font-size:13px; line-height: 20px; font-family: Arial, sans-serif;">
+						<img src="http://internations.github.com/antwort/images/grey-175x130.png" alt="Image Caption" border="0" hspace="0" vspace="0" style="vertical-align:top; padding-bottom:12px;" class="col-2-img">
+						<a href="#" style="color:#2469A0; font-weight:bold">I am Ishmael</a><br>
+						White squalls? white whale, shirr! shirr! Here have I heard all their chat just now, and the white whale—shirr! shirr!—but spoken of once! and&hellip;
+						<br>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+	</tr>
+</table>
